@@ -1,0 +1,27 @@
+---
+title: "고통분 과제1"
+author: "백지우"
+date: "2026-10-06"
+output: pdf_document
+---
+
+Problem 1
+```{r}
+set.seed(1)
+n = 200
+x = seq(0, 1, length.out = n)
+y = sin(2*pi*x) + rnorm(n, sd = 0.15)
+
+df <- data.frame(x = x, y = y)
+write.csv(df, "Data/hw1_data.csv", row.names = FALSE)
+
+
+library(ggplot2)
+loaded_df <- read.csv("data/hw1_data.csv")
+p <- ggplot(loaded_df, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "loess", color = "blue")
+
+ggsave("plots/regression_plot.png", plot = p, width = 6, height = 4)
+```
+
