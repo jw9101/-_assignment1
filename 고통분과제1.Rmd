@@ -2,7 +2,11 @@
 title: "고통분 과제1"
 author: "백지우"
 date: "2026-10-06"
-output: pdf_document
+output: 
+  html_document:
+    latex_engine: xelatex
+header-includes:
+  - \usepackage{kotex}
 ---
 ##Problem 1
 
@@ -182,7 +186,7 @@ simpson = function(f, a, b, n){
   return(result)
   }
 
-# sin함수 계산산
+# sin함수 계산
 func = function(x){
   sin(x)
 }
@@ -220,7 +224,7 @@ ggplot(df_err, aes(x = n, y = error, color = method, shape = method)) +
   labs(
     title = "수치적분 알고리즘별 오차 비교",
     x = "n",
-    y = "오차 (Log scale)"
+    y = "오차"
   ) +
   scale_color_manual(
     values = c("Left Rectangle" = "black", 
@@ -278,7 +282,7 @@ solve(A, b)
 ##problem 6
 
 ```{r}
-# Gaussian kernel 함수 구현현 
+# Gaussian kernel 함수 구현
 gaussian_kernel = function(x1, x2, rho=1){
   exp(-rho(x1 - x2)^2)
 }
